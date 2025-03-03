@@ -1,6 +1,6 @@
 void main() {
   calculateDiscount(150, true, false, false);
-  print(""); 
+  print("----------"); 
   calculateDiscount(250, false, true, true);
 }
 
@@ -17,12 +17,12 @@ void calculateDiscount(double totalAmount, bool isStudent, bool hasVoucher, bool
     discount = 15.0;
   }
 
-  double totalDiscount = discount; // Start with the highest discount
+  double totalDiscount = discount;
   if (totalAmount > 200) {
     totalDiscount += 5.0;
   }
 
-  double finalPrice = totalAmount * ((100 - discount) / 100);
+  double finalPrice = totalAmount * ((100 - totalDiscount) / 100);
 
   String discountCategory;
   if (totalDiscount > 15) {
@@ -34,7 +34,7 @@ void calculateDiscount(double totalAmount, bool isStudent, bool hasVoucher, bool
   }
 
   print("Gesamtbetrag: ${totalAmount.toStringAsFixed(2)}€");
-  print("Rabatt: $discount%");
-  print("Endpreis nach Rabatt: ${finalPrice.toStringAsFixed(2)}€");
+  print("Rabatt: $totalDiscount%");
+  print("Preis nach Rabatt: ${finalPrice.toStringAsFixed(2)}€");
   print("Rabattkategorie: $discountCategory");
 }
